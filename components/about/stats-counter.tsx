@@ -68,25 +68,30 @@ export function StatsCounter({ stat }: StatProps) {
 
   return (
     <div ref={ref} className="group relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#09757a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
-      <div className="relative bg-[#111] backdrop-blur-sm border border-white/5 p-5 rounded-xl text-center hover:-translate-y-1 transition-all duration-300 shadow-lg group-hover:border-[#09757a]/30">
-        <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
-          <Icon className="h-8 w-8 text-[#09757a] rotate-12" />
+      <div className="absolute -inset-1 bg-gradient-to-r from-[#0bc0c8] to-[#09757a] rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200" />
+      <div className="relative bg-black/40 backdrop-blur-md border border-white/10 p-6 sm:p-8 rounded-2xl text-center hover:-translate-y-2 transition-all duration-500 shadow-2xl group-hover:border-[#0bc0c8]/30">
+        <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
+          <Icon className="h-12 w-12 text-white rotate-12" />
         </div>
 
-        <div className="relative">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#09757a]/10 mb-2 group-hover:bg-[#09757a]/20 transition-colors">
-            <Icon className="h-5 w-5 text-[#09757a]" />
+        <div className="relative z-10">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 mb-4 group-hover:bg-[#0bc0c8]/20 transition-all duration-500 group-hover:scale-110">
+            <Icon className="h-6 w-6 text-[#0bc0c8]" />
           </div>
-          <div className="text-2xl md:text-3xl font-black text-white mb-0.5 tracking-tighter tabular-nums whitespace-nowrap">
+
+          <div className="text-3xl md:text-4xl font-black text-white mb-1 tracking-tighter tabular-nums whitespace-nowrap drop-shadow-sm">
             {stat.value.includes("-")
               ? <span className="text-white">{stat.value}</span>
               : <span>{Math.floor(count).toLocaleString()}</span>
             }
-            <span className="text-[#09757a] text-xl md:text-2xl ml-0.5">{stat.suffix}</span>
+            <span className="text-[#0bc0c8] text-2xl md:text-3xl ml-1 font-bold">{stat.suffix}</span>
           </div>
-          <div className="h-0.5 w-6 bg-[#09757a]/30 mx-auto mb-2 group-hover:w-12 transition-all duration-500" />
-          <p className="text-zinc-500 font-black text-[10px] uppercase tracking-widest group-hover:text-white transition-colors">{stat.label}</p>
+
+          <div className="h-1 w-8 bg-gradient-to-r from-[#0bc0c8]/40 to-transparent mx-auto mb-4 group-hover:w-16 transition-all duration-700 rounded-full" />
+
+          <p className="text-white/60 font-black text-[10px] uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300">
+            {stat.label}
+          </p>
         </div>
       </div>
     </div>

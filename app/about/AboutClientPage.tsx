@@ -1,7 +1,7 @@
 "use client"
 
 import StatsCounter from "@/components/about/stats-counter"
-import { Award, ChevronLeft, ChevronRight, Eye, MapPin, Rocket, Target, Truck, Users, Wrench, ShieldCheck, Star } from "lucide-react"
+import { Award, ChevronLeft, ChevronRight, Eye, MapPin, Rocket, Target, Truck, Users, Wrench, ShieldCheck, Star, Factory, Landmark, Globe } from "lucide-react"
 import Image from "next/image"
 import React, { useState, useEffect } from "react"
 
@@ -19,24 +19,17 @@ const icons = {
   Users,
   ShieldCheck,
   Star,
+  Factory,
+  Landmark,
+  Globe,
 }
 
 export default function AboutClientPage() {
-  const [trustIndex, setTrustIndex] = useState(0)
-
-  // Auto-rotate trust items
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTrustIndex((prev) => (prev + 1) % trustItems.length)
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [])
-
   const trustItems = [
-    { icon: "Star", title: "4.5★ TrustScore", description: "4,000+ Workshops" },
-    { icon: "Truck", title: "Fast Delivery", description: "PAN India Service" },
-    { icon: "Wrench", title: "Tool Specialist", description: "Expert Support" },
-    { icon: "ShieldCheck", title: "GST Verified", description: "B2B Manufacturer" },
+    { icon: "Star", title: "4.5★ TrustScore", description: "Trusted by 4,000+ Workshops nationwide" },
+    { icon: "Truck", title: "Fast Delivery", description: "PAN India Service with real-time tracking" },
+    { icon: "Wrench", title: "Tool Specialist", description: "Certified expert support for every tool" },
+    { icon: "ShieldCheck", title: "Genuine Quality", description: "100% authentic B2B manufacturing tools" },
   ]
 
   const founders = [
@@ -46,59 +39,101 @@ export default function AboutClientPage() {
   ]
 
   return (
-    <div className="w-full bg-background min-h-screen text-foreground transition-colors">
+    <div className="w-full bg-background min-h-screen text-foreground transition-colors overflow-x-hidden">
 
-      {/* HERO SECTION */}
-      <section className="relative py-6 sm:py-8 md:py-12 lg:py-16 bg-secondary border-b border-border overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-2 py-0.5 bg-[#09757a]/20 border border-[#09757a]/30 rounded mb-2 sm:mb-3">
-            <span className="text-[8px] sm:text-[9px] font-black text-[#09757a] uppercase tracking-wider sm:tracking-widest leading-none">Established 2023</span>
+      {/* HERO SECTION - Enhanced with Gradient & Pattern */}
+      <section className="relative py-20 sm:py-24 md:py-32 lg:py-40 flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#09757a]/20 via-background to-background" />
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] invert dark:invert-0" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#09757a]/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#09757a]/5 rounded-full blur-3xl animate-pulse" />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#09757a]/10 border border-[#09757a]/20 rounded-full mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span className="text-[10px] sm:text-xs font-bold text-[#09757a] uppercase tracking-widest leading-none flex items-center gap-1.5">
+              <Star className="h-3 w-3" /> Established 2023
+            </span>
           </div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-foreground mb-2 sm:mb-3 tracking-tighter uppercase leading-tight px-2">
-            Powering India&apos;s Workshops with <span className="text-[#09757a]">Professional Tools</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground mb-6 tracking-tighter uppercase leading-[0.9] px-2 max-w-5xl mx-auto drop-shadow-sm">
+            Powering India&apos;s Workshops with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#09757a] to-[#0bc0c8]">Professional Tools</span>
           </h1>
-          <p className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed px-2">
-            Hexamech Linich Tools is Kerala&apos;s leading B2B automotive tools supplier, delivering genuine equipment to over 4,000 workshops across India.
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed px-2 opacity-90">
+            Hexamech Linich Tools is Kerala&apos;s premier B2B automotive ecosystem, delivering industrial excellence to over 4,000 workshops across the nation.
           </p>
-        </div>
-      </section>
 
-      {/* IDENTITY SECTION */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16">
-        <div className="container mx-auto px-4 sm:px-6 max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 px-2 py-0.5 bg-muted border border-border rounded mb-2 sm:mb-3">
-            <span className="text-[8px] sm:text-[9px] font-black text-muted-foreground uppercase tracking-wider sm:tracking-widest leading-none">Our Identity</span>
-          </div>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter uppercase leading-tight">Who We Are</h2>
-          <div className="space-y-3 sm:space-y-4 text-xs sm:text-[13px] md:text-sm text-muted-foreground leading-relaxed font-medium px-2">
-            <p>
-              <strong className="text-foreground">Hexamech Linich Tools</strong> was founded in 2023 in Chulliparamba, Kerala — with a single mission: to provide automotive workshops with reliable access to genuine, professional-grade tools at wholesale prices.
-            </p>
-            <p>
-              Today, we proudly serve <span className="text-[#09757a] font-bold">4,000+ workshops</span> with over <span className="text-[#09757a] font-bold">1,000+ SKUs</span> from world-renowned brands.
-            </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="h-0.5 w-12 bg-[#09757a] rounded-full mx-auto" />
           </div>
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-muted/50 border-y border-border">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-6xl">
-          <div className="text-center mb-6 sm:mb-8 md:mb-10">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-foreground mb-1.5 sm:mb-2 tracking-tighter uppercase leading-tight">The <span className="text-[#09757a]">Difference</span></h2>
-            <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-wider sm:tracking-widest opacity-80">Why workshops trust Hexamech.</p>
+      {/* IDENTITY SECTION - Modern Split Layout Feel */}
+      <section className="py-20 sm:py-24 md:py-32 bg-secondary/30 relative">
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-muted border border-border rounded-full">
+                <span className="text-[10px] sm:text-xs font-black text-muted-foreground uppercase tracking-widest leading-none">The Story</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground tracking-tighter uppercase leading-none">Who We Are</h2>
+              <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed font-normal">
+                <p className="border-l-2 border-[#09757a] pl-4 italic">
+                  &quot;Access to professional tools shouldn&apos;t be a luxury for any Indian workshop.&quot;
+                </p>
+                <p>
+                  <strong className="text-foreground">Hexamech Linich Tools</strong> was founded in 2023 in Chulliparamba, Kerala — with a single mission: to revolutionize the automotive service industry by providing reliable access to genuine, professional-grade tools at wholesale prices.
+                </p>
+                <p>
+                  What started as a regional enterprise has rapidly evolved. Today, we proudly serve <span className="text-[#09757a] font-bold">4,000+ workshops</span> with a curated inventory of over <span className="text-[#09757a] font-bold">1,000+ specialized SKUs</span>.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#09757a]/20 to-secondary relative group">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80')] bg-cover bg-center grayscale opacity-40 group-hover:grayscale-0 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8 p-6 bg-background/80 backdrop-blur-md rounded-xl border border-white/10 shadow-2xl">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#09757a] flex items-center justify-center text-white shrink-0">
+                      <Landmark className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-black uppercase text-sm tracking-tight">Kozhikode, Kerala</h4>
+                      <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Our Strategic Hub</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US - Premium Grid */}
+      <section className="py-24 sm:py-32 border-y border-border relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#09757a]/5 to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
+          <div className="text-center mb-16 sm:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tighter uppercase leading-none">The <span className="text-[#09757a]">Hexamech</span> Edge</h2>
+            <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-[0.3em] opacity-80">Defining Industry Standards</p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            {trustItems.map((item) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {trustItems.map((item, idx) => {
               const IconComponent = icons[item.icon as keyof typeof icons]
               return (
-                <div key={item.title} className="bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 flex flex-col items-center text-center shadow-lg sm:shadow-2xl hover:border-[#09757a]/40 transition-all duration-500 group active:scale-[0.98]">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg bg-background border border-border flex items-center justify-center text-[#09757a] group-hover:bg-[#09757a] group-hover:text-white mb-2.5 sm:mb-3 md:mb-4 transition-all">
-                    {IconComponent && <IconComponent className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6" />}
+                <div key={item.title} className="group relative">
+                  <div className="absolute inset-0 bg-[#09757a] opacity-0 group-hover:opacity-[0.03] transition-opacity rounded-3xl" />
+                  <div className="bg-card border border-border/50 rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-2xl hover:border-[#09757a]/30 transition-all duration-500 h-full">
+                    <div className="w-16 h-16 rounded-2xl bg-[#09757a]/5 border border-[#09757a]/10 flex items-center justify-center text-[#09757a] group-hover:bg-[#09757a] group-hover:text-white mb-6 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3 shadow-inner">
+                      {IconComponent && <IconComponent className="h-7 w-7" />}
+                    </div>
+                    <h3 className="font-black text-foreground text-base lg:text-lg uppercase tracking-tight mb-3 group-hover:text-[#09757a] transition-colors leading-tight">{item.title}</h3>
+                    <p className="text-muted-foreground text-xs leading-relaxed font-medium">{item.description}</p>
                   </div>
-                  <h3 className="font-black text-foreground text-[11px] sm:text-xs md:text-sm lg:text-base uppercase tracking-tight mb-0.5 sm:mb-1 group-hover:text-[#09757a] transition-colors leading-tight">{item.title}</h3>
-                  <p className="text-muted-foreground text-[9px] sm:text-[10px] md:text-xs leading-relaxed font-medium">{item.description}</p>
                 </div>
               )
             })}
@@ -106,75 +141,89 @@ export default function AboutClientPage() {
         </div>
       </section>
 
-      {/* FOUNDERS SECTION */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16">
-        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
-          <div className="text-center mb-6 sm:mb-8 md:mb-10">
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-foreground mb-1.5 sm:mb-2 tracking-tighter uppercase leading-tight">The <span className="text-[#09757a]">Visionaries</span></h2>
-            <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground font-bold uppercase tracking-wider sm:tracking-widest opacity-80">Driving innovation in automotive sales.</p>
+      {/* FOUNDERS SECTION - High-End Presentation */}
+      <section className="py-24 sm:py-32 bg-background relative">
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+          <div className="text-center mb-16 sm:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tighter uppercase leading-none">The <span className="text-[#09757a]">Visionaries</span></h2>
+            <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-[0.3em] opacity-80">Driving Automotive Innovation</p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-5 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
             {founders.map((founder) => (
-              <div key={founder.name} className="flex flex-col items-center text-center group">
-                <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden mb-3 sm:mb-4 md:mb-6 border-2 sm:border-3 md:border-4 border-border group-hover:border-[#09757a] transition-all duration-700 shadow-lg sm:shadow-xl md:shadow-2xl">
-                  <Image
-                    src={founder.image || "/placeholder.svg"}
-                    alt={founder.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#09757a]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div key={founder.name} className="flex flex-col items-center text-center group cursor-default">
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 mb-8">
+                  {/* Decorative Rings */}
+                  <div className="absolute inset-0 border border-[#09757a]/20 rounded-full group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-2 border border-[#09757a]/40 rounded-full group-hover:rotate-180 transition-transform duration-1000 border-dashed" />
+
+                  <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-background shadow-2xl z-10">
+                    <Image
+                      src={founder.image || "/placeholder.svg"}
+                      alt={founder.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale group-hover:grayscale-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09757a]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
-                <h3 className="text-[10px] sm:text-xs md:text-sm lg:text-lg font-black text-foreground uppercase tracking-tight mb-0.5 sm:mb-1 leading-tight">{founder.name}</h3>
-                <p className="text-[7px] sm:text-[8px] md:text-[9px] font-black text-[#09757a] uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em]">{founder.role}</p>
+                <h3 className="text-lg md:text-xl font-black text-foreground uppercase tracking-tight mb-2 leading-tight group-hover:text-[#09757a] transition-colors duration-300">{founder.name}</h3>
+                <div className="h-0.5 w-8 bg-[#09757a]/30 mb-2 group-hover:w-16 transition-all duration-500" />
+                <p className="text-[10px] md:text-xs font-black text-[#09757a] uppercase tracking-[0.4em]">{founder.role}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* MISSION & VISION */}
-      <section className="py-8 sm:py-10 md:py-14 lg:py-16 bg-muted/50 border-y border-border">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-            <div className="bg-background border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-lg sm:shadow-2xl border-l-[3px] border-l-[#09757a] group hover:border-[#09757a]/40 transition-all active:scale-[0.99]">
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
-                <Target className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#09757a]" />
-                <h3 className="font-black text-foreground text-xs sm:text-sm md:text-base uppercase tracking-tight">Our Mission</h3>
+      {/* MISSION & VISION - Distinctive Grid */}
+      <section className="py-24 sm:py-32 bg-secondary/50 border-y border-border">
+        <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-background border border-border/60 rounded-3xl p-8 md:p-10 shadow-xl border-t-4 border-t-[#09757a] transition-all duration-300 hover:-translate-y-2 group">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#09757a]/10 flex items-center justify-center text-[#09757a] group-hover:bg-[#09757a] group-hover:text-white transition-colors shadow-sm">
+                  <Target className="h-6 w-6" />
+                </div>
+                <h3 className="font-black text-foreground text-xl uppercase tracking-tighter">Our Mission</h3>
               </div>
-              <p className="text-muted-foreground text-[11px] sm:text-xs md:text-[13px] leading-relaxed font-medium">
-                To empower workshops with genuine tools, expert guidance, and reliable service. We provide the infrastructure for automotive excellence.
+              <p className="text-muted-foreground text-sm lg:text-base leading-relaxed font-medium">
+                To empower Indian workshops with genuine, high-performance tools, expert industrial guidance, and unmatched wholesale distribution. We build the backbone for automotive excellence.
               </p>
             </div>
 
-            <div className="bg-background border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-lg sm:shadow-2xl border-l-[3px] border-l-muted-foreground group hover:border-muted-foreground/50 transition-all active:scale-[0.99]">
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
-                <Eye className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-muted-foreground" />
-                <h3 className="font-black text-foreground text-xs sm:text-sm md:text-base uppercase tracking-tight">Our Vision</h3>
+            <div className="bg-background border border-border/60 rounded-3xl p-8 md:p-10 shadow-xl border-t-4 border-t-[#0bc0c8] transition-all duration-300 hover:-translate-y-2 group">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#0bc0c8]/10 flex items-center justify-center text-[#0bc0c8] group-hover:bg-[#0bc0c8] group-hover:text-white transition-colors shadow-sm">
+                  <Eye className="h-6 w-6" />
+                </div>
+                <h3 className="font-black text-foreground text-xl uppercase tracking-tighter">Our Vision</h3>
               </div>
-              <p className="text-muted-foreground text-[11px] sm:text-xs md:text-[13px] leading-relaxed font-medium">
-                To become India&apos;s most trusted B2B tools supplier — recognized for integrity, availability, and industrial precision.
+              <p className="text-muted-foreground text-sm lg:text-base leading-relaxed font-medium">
+                To become Asia&apos;s most influential B2B automotive gear supplier — recognized for industrial precision, unshakeable integrity, and universal accessibility.
               </p>
             </div>
 
-            <div className="bg-background border border-border rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-lg sm:shadow-2xl border-l-[3px] border-l-[#09757a] group hover:border-[#09757a]/40 transition-all active:scale-[0.99]">
-              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
-                <Rocket className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#09757a]" />
-                <h3 className="font-black text-foreground text-xs sm:text-sm md:text-base uppercase tracking-tight">Our Future</h3>
+            <div className="bg-background border border-border/60 rounded-3xl p-8 md:p-10 shadow-xl border-t-4 border-t-[#09757a] transition-all duration-300 hover:-translate-y-2 group">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[#09757a]/10 flex items-center justify-center text-[#09757a] group-hover:bg-[#09757a] group-hover:text-white transition-colors shadow-sm">
+                  <Globe className="h-6 w-6" />
+                </div>
+                <h3 className="font-black text-foreground text-xl uppercase tracking-tighter">Our Future</h3>
               </div>
-              <p className="text-muted-foreground text-[11px] sm:text-xs md:text-[13px] leading-relaxed font-medium">
-                Expand to 5,000+ SKUs and serve 25,000+ workshops across all of India, setting the standard for tool distribution.
+              <p className="text-muted-foreground text-sm lg:text-base leading-relaxed font-medium">
+                Expanding our digital footprint to serve 25,000+ workshops across all 28 Indian states, while maintaining the personal touch of our Kerala roots.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="py-8 sm:py-10 md:py-12 lg:py-16 bg-[#09757a]">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+      {/* STATS SECTION - High Intensity */}
+      <section className="py-20 sm:py-28 relative bg-[#09757a] overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
             {stats.map((stat) => (
               <StatsCounter key={stat.label} stat={stat} />
             ))}
@@ -182,15 +231,34 @@ export default function AboutClientPage() {
         </div>
       </section>
 
-      {/* LOCATION SECTION */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-24 bg-background">
+      {/* LOCATION SECTION - Professional Footer Style */}
+      <section className="py-20 sm:py-32 bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-[#09757a] to-transparent" />
         <div className="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
-          <div className="inline-flex items-center justify-center p-2 sm:p-2.5 md:p-3 bg-[#09757a]/10 rounded-full mb-4 sm:mb-5 md:mb-6 border border-[#09757a]/20">
-            <MapPin className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#09757a]" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#09757a]/10 rounded-full mb-8 border border-[#09757a]/20 group hover:scale-110 transition-transform duration-500 shadow-xl">
+            <MapPin className="h-8 w-8 text-[#09757a]" />
           </div>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black text-foreground mb-1.5 sm:mb-2 tracking-tighter uppercase leading-tight">Head Office</h2>
-          <p className="text-xs sm:text-sm md:text-base text-muted-foreground font-medium mb-0.5 sm:mb-1 uppercase tracking-wide px-2">Door No 17/346, Chulliparamba, Near Farook College</p>
-          <p className="text-[#09757a] font-black text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.4em]">Calicut, Kerala – India</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-4 tracking-tighter uppercase leading-none px-4 flex flex-col gap-2">
+            <span>Our Regional</span>
+            <span className="text-[#09757a]">Command Center</span>
+          </h2>
+          <div className="max-w-xl mx-auto mb-10">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-medium uppercase tracking-widest leading-relaxed mb-2">Door No 17/346, Chulliparamba, Near Farook College</p>
+            <p className="text-[#09757a] font-black text-xs sm:text-sm md:text-base uppercase tracking-[0.5em] mt-4">Calicut, Kerala – India</p>
+          </div>
+
+          <a
+            href="https://maps.google.com/?q=Hexamech+Linich+Tools+Chulliparamba+Calicut"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-black text-xs uppercase tracking-widest rounded-xl hover:bg-[#09757a] hover:text-white transition-all duration-300 group shadow-xl active:scale-95 transition-all"
+          >
+            <MapPin className="h-4 w-4" />
+            View on Map
+            <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+
+          <div className="h-px w-24 bg-[#09757a]/30 mx-auto mt-12" />
         </div>
       </section>
     </div>
